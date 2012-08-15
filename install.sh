@@ -4,7 +4,8 @@
 HERE=$(dirname $0)
 
 echo "Getting settings"
-. $HERE/settings.sh
+settingsPath=$1
+. $settingsPath
 
 # Path to remote install script
 remoteScriptPath=$HERE/
