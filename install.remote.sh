@@ -25,7 +25,8 @@ $userName   ALL = NOPASSWD: /usr/bin/puppet
 
 echo "Installing sudo & puppet"
 echo "APT::Get::AllowUnauthenticated 1;" > /etc/apt/apt.conf
-sed -i 's/mirror\.yandex\.ru\/debian\-security/security\.debian\.org/g' /etc/apt/sources.list
+echo "deb http://debian.nsu.ru/debian squeeze main" > /etc/apt/sources.list
+echo "deb http://debian.nsu.ru/debian-security squeeze/updates main" >> /etc/apt/sources.list
 
 apt-get update
 apt-get -y upgrade
