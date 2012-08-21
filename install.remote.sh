@@ -23,7 +23,7 @@ root        ALL = (ALL) ALL
 $userName   ALL = NOPASSWD: /usr/bin/puppet
 " > /etc/sudoers
 
-echo "Installing sudo & puppet"
+echo "Installing sudo, puppet & rubygems"
 echo "APT::Get::AllowUnauthenticated 1;" > /etc/apt/apt.conf
 echo "deb http://debian.nsu.ru/debian squeeze main" > /etc/apt/sources.list
 echo "deb http://debian.nsu.ru/debian-security squeeze/updates main" >> /etc/apt/sources.list
@@ -32,3 +32,4 @@ apt-get update
 apt-get -y upgrade
 apt-get -y install sudo
 apt-get -y install puppet
+apt-get -y install rubygems
