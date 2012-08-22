@@ -4,9 +4,9 @@ Allows to initially install masterless puppet on remote node and then periodical
 
 ## Description
 
-This module is for masterless puppet versions. On new node it runs once to install puppet. Then you periodically apply changes in your manifests to this node.
+This module is for masterless puppet versions. On new node it runs once in installs puppet. And then you periodically apply changes in your manifests to this node.
 
-Both install & apply runs on your machine, that contacts remote node via SSH and do all job there.
+Both install & apply you run on your machine, that contacts remote node via SSH and do all job there.
 
 ## Usage
 
