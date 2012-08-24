@@ -20,6 +20,7 @@ So you create in it file with settings, like:
     rootName=root
     userName=user
     localKey=~/.ssh/id_rsa
+    puppetColor=false
 
     modules=/home/you/puppet/some-main-module:/another/path/to/module2:./moduleN
     entryPoint=/home/you/puppet/some-main-module/manifests/site.pp

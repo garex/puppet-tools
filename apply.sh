@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
-# Display defaults
-if [ -z "$PUPPET_COLOR" ]; then
-  PUPPET_COLOR="yes"
-fi
 
 echo "Getting settings"
 settingsPath=$1
 . $settingsPath
+
+if [ -z "$puppetColor" ]; then
+  puppetColor="false"
+fi
 
 echo "Uploading puppet"
 ssh $userName@$hostName "
@@ -21,7 +21,7 @@ done
 
 echo "Applying puppet"
 ssh $userName@$hostName "
-  sudo puppet apply --verbose --color $PUPPET_COLOR --modulepath ~/puppet ~/puppet/$entryPoint;
+  sudo puppet apply --verbose --color $puppetColor --modulepath ~/puppet ~/puppet/$entryPoint;
   rm -rf ~/puppet;
 "
 echo "Done"
