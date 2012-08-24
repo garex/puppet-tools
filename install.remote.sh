@@ -25,8 +25,6 @@ $userName   ALL = NOPASSWD: /usr/bin/puppet
 
 echo "Installing sudo, puppet & rubygems"
 echo "APT::Get::AllowUnauthenticated 1;" > /etc/apt/apt.conf
-echo "deb http://debian.nsu.ru/debian squeeze main" > /etc/apt/sources.list
-echo "deb http://debian.nsu.ru/debian-security squeeze/updates main" >> /etc/apt/sources.list
 
 apt-get update
 apt-get -y upgrade
