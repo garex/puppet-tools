@@ -6,7 +6,7 @@ modulePath='~/puppet'
 settingsPath=$1
 . $settingsPath
 
-# zero
+# -z = zero
 if [ -z "$puppetColor" ]; then
   puppetColor="false"
 fi
@@ -30,12 +30,12 @@ ssh $userName@$hostName "
   rm --recursive --force $modulePath;
   mkdir --parents $modulePath;
 "
-# quiet
+# -q = quiet
 scp -q $packFile $userName@$hostName:$modulePath/$(basename $packFile)
 
 echo "Applying puppet"
 ssh $userName@$hostName "
-  tar --extract --bzip2 --file $modulePath/$(basename $packFile) --directory $modulePath
+  tar --extract --bzip2 --file $modulePath/$(basename $packFile) --directory $modulePath;
   sudo puppet apply --verbose --color $puppetColor --modulepath $modulePath $modulePath/$entryPoint;
   rm --recursive --force $modulePath;
 "
