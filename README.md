@@ -51,6 +51,19 @@ In IDE you can setup both actions as some custom actions, that are binded to key
 
 So during development/debug you will hit one key and see results in IDE`s console. For console not forget to choose some checkbox in your IDE.
 
+### Windows people
+
+Windows version also exists. It's a good news. "Bad" news is that it have two dependencies or even three:
+
+* path to [Putty][1]
+* path to [7-zip][2]
+* public key from putty private key
+
+See examples in settings.bat.tpl. All other operations is same -- you only need to use install.bat and apply.bat.
+
 ## GOODTODO
 * Currently remote-install script is Debian-specific. You are welcome to make it more universal.
 * Specify more IDE-specific recipes for puppet development or delegate it by giving link to good source.
+
+  [1]: http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
+  [2]: http://www.7-zip.org/download.html
