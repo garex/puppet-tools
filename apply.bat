@@ -41,7 +41,7 @@ SET cmd=%cmd% mkdir --parents %modulePath%;
 %appScp% -C -i "%localKey%" -q "%packFile%.bz2" %userName%@%hostName%:%modulePath%/file.bz2
 
 echo Applying puppet
-SET cmd=      tar --extract --bzip2 --file %modulePath%/file.bz2 --directory %modulePath%;
+SET cmd=      tar --extract --bzip2 --touch --file %modulePath%/file.bz2 --directory %modulePath%;
 SET cmd=%cmd% sudo puppet apply --verbose --color %puppetColor% --modulepath %modulePath% %modulePath%/%entryPoint%;
 SET cmd=%cmd% rm --recursive --force %modulePath%;
 %appSsh% -ssh -i "%localKey%" %userName%@%hostName% "%cmd%"
