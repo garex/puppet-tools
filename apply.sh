@@ -35,7 +35,7 @@ scp -q $packFile $userName@$hostName:$modulePath/$(basename $packFile)
 
 echo "Applying puppet"
 ssh $userName@$hostName "
-  tar --extract --bzip2 --file $modulePath/$(basename $packFile) --directory $modulePath;
+  tar --extract --bzip2 --touch --file $modulePath/$(basename $packFile) --directory $modulePath;
   sudo puppet apply --verbose --color $puppetColor --modulepath $modulePath $modulePath/$entryPoint;
   rm --recursive --force $modulePath;
 "
