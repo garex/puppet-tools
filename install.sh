@@ -7,6 +7,11 @@ echo "Getting settings"
 settingsPath=$1
 . $settingsPath
 
+# -z = zero
+if [ -z "$userName" ]; then
+  userName=puppet
+fi
+
 # Path to remote install script
 remoteScriptPath=$HERE/
 remoteScriptName=install.remote.sh

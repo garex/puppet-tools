@@ -7,6 +7,12 @@ chmod 640 ~/.ssh/authorized_keys
 echo "Adding auth keys for user"
 userName=$1
 userHome=$(grep $userName /etc/passwd | cut -d ":" -f6)
+
+if [ "" = "$userHome" ]; then
+  useradd $userName --create-home --shell /bin/bash --user-group
+  userHome=$(grep $userName /etc/passwd | cut -d ":" -f6)
+fi
+
 rm -rf $userHome/.ssh
 mkdir $userHome/.ssh
 cp ~/.ssh/authorized_keys $userHome/.ssh/authorized_keys
