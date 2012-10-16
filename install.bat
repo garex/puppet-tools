@@ -9,6 +9,10 @@ CALL %settingsPath%
 SET appSsh="%puttyPath%plink"
 SET appScp="%puttyPath%pscp"
 
+IF ""=="%userName%" (
+  SET userName=puppet
+)
+
 REM Path to remote install script
 SET remoteScriptPath=%HERE%
 SET remoteScriptName=install.remote.sh

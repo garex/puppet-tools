@@ -37,6 +37,12 @@ Then just start install.sh, passing to it path to your settings.sh:
 
 Script will ask you some SSH-specific questions and then you are done. Now just change your puppet modules & main module and apply changes.
 
+#### Defaults
+
+You can skip userName and puppetColor variables as they are replaced by defaults.
+Also when we dont' have specified userName on remote host, then we will add it during initial install.
+
+
 ### Apply
 
 Apply is easy:

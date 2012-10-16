@@ -11,6 +11,11 @@ if [ -z "$puppetColor" ]; then
   puppetColor="false"
 fi
 
+# -z = zero
+if [ -z "$userName" ]; then
+  userName=puppet
+fi
+
 # Packing puppet
 packDirectory=$(mktemp --directory)
 packFile=$(mktemp)

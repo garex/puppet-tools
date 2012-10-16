@@ -17,6 +17,10 @@ IF ""=="%puppetColor%" (
   SET puppetColor=false
 )
 
+IF ""=="%userName%" (
+  SET userName=puppet
+)
+
 REM Packing puppet
 SET packRoot=%TEMP%\puppet-tools-pack-%RANDOM%.tmp
 SET packDirectory=%packRoot%\directory
