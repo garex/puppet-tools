@@ -21,6 +21,10 @@ IF ""=="%userName%" (
   SET userName=puppet
 )
 
+IF ""=="%remoteLogRoot%" (
+  SET remoteLogRoot=/var/log/puppet
+)
+
 REM Packing puppet
 SET packRoot=%TEMP%\puppet-tools-pack-%RANDOM%.tmp
 SET packDirectory=%packRoot%\directory
@@ -46,7 +50,7 @@ SET cmd=%cmd% mkdir --parents %modulePath%;
 
 echo Applying puppet
 SET cmd=      tar --extract --bzip2 --touch --file %modulePath%/file.bz2 --directory %modulePath%;
-SET cmd=%cmd% sudo puppet apply --verbose --color %puppetColor% --modulepath %modulePath% %modulePath%/%entryPoint%;
+SET cmd=%cmd% sudo puppet apply --verbose --color %puppetColor% --logdest console --logdest "%remoteLogRoot%/$(date --rfc-3339=seconds).log" --modulepath %modulePath% %modulePath%/%entryPoint%;
 SET cmd=%cmd% rm --recursive --force %modulePath%;
 %appSsh% -ssh -i "%localKey%" %userName%@%hostName% "%cmd%"
 
