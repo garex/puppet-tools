@@ -24,6 +24,7 @@ So you create in it file with settings, like:
 
     modules=/home/you/puppet/some-main-module:/another/path/to/module2:./moduleN
     entryPoint=/home/you/puppet/some-main-module/manifests/site.pp
+    remoteLogRoot=/var/log/puppet
 
 Puppet tradition recommend to put it under "tools" directory. Let it be /home/you/puppet/some-main-module/tools/settings.sh
 
@@ -39,8 +40,9 @@ Script will ask you some SSH-specific questions and then you are done. Now just 
 
 #### Defaults
 
-You can skip userName and puppetColor variables as they are replaced by defaults.
+You can skip userName, puppetColor and remoteLogRoot variables as they are replaced by defaults.
 Also when we dont' have specified userName on remote host, then we will add it during initial install.
+To log your puppet runs we use remoteLogRoot -- you can also change it or skip to use default value.
 
 
 ### Apply

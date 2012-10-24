@@ -16,6 +16,11 @@ if [ -z "$userName" ]; then
   userName=puppet
 fi
 
+# -z = zero
+if [ -z "$remoteLogRoot" ]; then
+  remoteLogRoot=/var/log/puppet
+fi
+
 # Packing puppet
 packDirectory=$(mktemp --directory)
 packFile=$(mktemp)
@@ -38,10 +43,11 @@ ssh $userName@$hostName "
 # -q = quiet
 scp -q $packFile $userName@$hostName:$modulePath/$(basename $packFile)
 
+remoteLogFile=$remoteLogRoot/$(date --rfc-3339=seconds).log
 echo "Applying puppet"
 ssh $userName@$hostName "
   tar --extract --bzip2 --touch --file $modulePath/$(basename $packFile) --directory $modulePath;
-  sudo puppet apply --verbose --color $puppetColor --modulepath $modulePath $modulePath/$entryPoint;
+  sudo puppet apply --verbose --color $puppetColor --logdest console --logdest '$remoteLogFile' --modulepath $modulePath $modulePath/$entryPoint;
   rm --recursive --force $modulePath;
 "
 echo "Done"

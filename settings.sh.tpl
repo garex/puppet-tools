@@ -6,3 +6,4 @@ puppetColor=false
 
 modules=./module1:./module2:./moduleN
 entryPoint=module1/manifests/site.pp
+remoteLogRoot=/var/log/puppet
