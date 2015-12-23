@@ -33,7 +33,7 @@ do
   rm --recursive --force $packDirectory/$(basename $module)/.git
 done
 
-tar --create --bzip2 --file $packFile --directory $packDirectory .
+tar --create --dereference --bzip2 --file $packFile --directory $packDirectory .
 
 echo "Uploading puppet"
 ssh $userName@$hostName "
